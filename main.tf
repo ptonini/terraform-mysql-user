@@ -1,14 +1,8 @@
-resource "random_password" "this" {
-  count   = var.password == null ? 1 : 0
-  length  = 16
-  special = false
-}
-
 resource "mysql_user" "this" {
   provider           = mysql
   user               = var.name
   host               = var.host
-  plaintext_password = try(random_password.this[0].result, var.password)
+  plaintext_password = var.password
 }
 
 resource "mysql_grant" "this" {

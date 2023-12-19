@@ -4,9 +4,7 @@ variable "host" {
   default = "%"
 }
 
-variable "password" {
-  default = null
-}
+variable "password" {}
 
 variable "grants" {
   type    = map(list(string))
